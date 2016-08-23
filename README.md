@@ -1,0 +1,3 @@
+# angular.sticky.directive
+
+temp
