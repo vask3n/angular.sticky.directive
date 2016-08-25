@@ -5,7 +5,7 @@
 
   function stickyOject() {
 
-    controller.$inject =['$element','$window'];
+    controller.$inject = ['$element', '$window'];
 
     function controller($element, $window) {
 
@@ -14,9 +14,46 @@
 
       var stickyFrom = isStickyFrom();
       var stickyUntil = isStickyUntil();
-      var stickyOffset = self.stickyOffset || 0;
+      var stickyOffset = parseInt(self.stickyOffset) || 0;
       var stickyFromMedia = isStickyFromMedia();
-      
+      var scrollView = getStickyParent();
+      var scrollViewOffset = getScrollViewOffset();
+      var parentElem;
+
+      init();
+
+      function init() {
+        createParentElement();
+      }
+
+      function createParentElement() {
+        $element.wrap('<span>');
+        parentElem = $element.parent();
+      }
+
+      function getStickyParent() {
+        // Get the parent with scrollbar
+        return angular.isDefined(self.stickyParent) ? scrollParent(self.stickyParent) : $window;
+      }
+
+      function getScrollViewOffset() {
+        // Check offset if scrollView is not $window.
+        return getStickyParent() !== $window ? scrollParent(self.stickyParent)[0].getBoundingClientRect().top : 0;
+      }
+
+      function scrollParent(selector) {
+        // Find first parent that hits the selector;
+        // TODO ksaanen: make this find it's scroll parent without selector defined
+        var el = $element.parent();
+        while (el !== document) {
+          var iteration = el;
+          if (iteration.parent()[0].querySelectorAll(selector).length > 0) {
+            return iteration;
+          }
+          el = iteration.parent();
+        }
+        return null;
+      }
 
       function isStickyFromMedia() {
         // Check media queries against "sticky-from-media" attribute when set.
@@ -27,26 +64,27 @@
         return true;
       }
 
-      function sticky(el){
+      function sticky() {
+        // Get sticky
         if (!self.isStickyActive) {
-          el.css({
-            height: el[0].offsetHeight + 'px',
-            width: el[0].offsetWidth + 'px',
+          $element.css({
+            height: $element[0].offsetHeight + 'px',
+            width: $element[0].offsetWidth + 'px',
             position: 'fixed',
-            top: stickyOffset + 'px'
+            top: (stickyOffset + scrollViewOffset) + 'px'
           });
           dummySwitch();
+          self.isStickyActive = true;
         };
-        self.isStickyActive = true;
       }
 
-      function unsticky(el){
+      function unsticky(){
         // Reset all values.
         if (self.isStickyActive) {
-          el.css({ height: '', width: '', position: '', top: '' });
+          $element.css({ height: '', width: '', position: '', top: '' });
           dummySwitch();
+          self.isStickyActive = false;
         };
-        self.isStickyActive = false;
       }
 
       function isStickyFrom() {
@@ -54,7 +92,7 @@
         if (angular.isDefined(self.stickyFrom)) {
           return document.querySelector(self.stickyFrom);
         }
-        return $element[0].parentNode;
+        return $element.parent()[0];
       }
 
       function isStickyUntil() {
@@ -70,19 +108,18 @@
         if (!self.isStickyActive) {
           var dummy = document.createElement('div');
           angular.element(dummy).css({ height: $element[0].offsetHeight + 'px', width: $element[0].offsetWidth + 'px' });
-          $element.parent()[0].insertBefore(dummy, $element[0]);
+          parentElem.append(dummy);
         } else {
-          $element[0].previousElementSibling.remove();
+          $element.next().remove();
         }
       }
 
-      angular.element($window).on('scroll', function(){
+      angular.element(scrollView).on('scroll', function () {
         // Trigger directive functions on scroll.
         if (stickyFrom.getBoundingClientRect().top < stickyOffset && stickyFromMedia) {
-          sticky($element);
-        }
-        if (stickyFrom.getBoundingClientRect().top > stickyOffset && stickyFromMedia || stickyUntil && stickyFromMedia && (stickyUntil.getBoundingClientRect().top - $element[0].offsetHeight) < stickyOffset) {
-          unsticky($element);
+          sticky();
+        } else if (stickyFrom.getBoundingClientRect().top > stickyOffset && stickyFromMedia || stickyUntil && stickyFromMedia && (stickyUntil.getBoundingClientRect().top - $element[0].offsetHeight) < stickyOffset) {
+          unsticky();
         }
       });
     }
@@ -90,12 +127,13 @@
     return {
       restrict: 'A',
       controller: controller,
-      controllerAs: 'stickyController',
+      controllerAs: '$ctrl',
       bindToController: {
         stickyFrom: '@',
         stickyUntil: '@',
         stickyOffset: '@',
-        stickyFromMedia: '@'
+        stickyFromMedia: '@',
+        stickyParent: '@'
       }
     }
   }
