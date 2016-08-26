@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('appModule').directive('stickyOject', stickyOject);
+  angular.module('appModule').directive('ngSticky', ngSticky);
 
-  function stickyOject() {
+  function ngSticky() {
 
     controller.$inject = ['$element', '$window'];
 
@@ -122,6 +122,7 @@
           unsticky();
         }
       });
+      
     }
 
     return {

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+	<head>
+		<title>ng-Sticky demo</title>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<style type="text/css">
+			.container {
+				margin-top:200px;
+			}
+			h1 {position: relative;}
+			#sidebar {border:1px solid red;}
+		</style>
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<div id="sidebar" ng-sticky sticky-offset="20" sticky-from-media="sm">
+						<h2>Sidebar</h2>
+						<p>Test test test...</p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8">
+					<h1 class="vanaf">Main</h1>
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus ut tellus sed tincidunt. Maecenas ac tellus in eros sollicitudin aliquet. Nam tempus ligula massa, ac suscipit tortor placerat at. Suspendisse malesuada arcu nec egestas scelerisque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean velit nisl, pretium accumsan consectetur et, vehicula at orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi hendrerit ipsum ut suscipit pulvinar. Pellentesque ac odio eget augue posuere placerat nec quis ipsum. Vestibulum sapien tortor, feugiat id vestibulum a, tincidunt vitae sapien. Cras sit amet blandit justo, quis semper nunc. Fusce magna massa, ornare sed nulla nec, hendrerit luctus eros. Nullam lobortis, orci eu maximus iaculis, arcu nulla imperdiet eros, sit amet pulvinar odio dui vitae turpis. Mauris aliquam dui viverra scelerisque euismod.</p>
+
+					<p>Donec ac dignissim turpis. In dignissim justo viverra mattis sagittis. Nullam aliquam est aliquet risus imperdiet accumsan. Maecenas ultricies purus vitae pulvinar cursus. Duis id lacinia elit. Duis vel tincidunt leo. Donec viverra magna rhoncus nisl cursus, eget venenatis odio cursus. Maecenas vitae nisl vitae quam dictum venenatis eu at felis.</p>
+
+					<p>Proin id mauris elementum, dapibus lacus sit amet, vehicula tortor. Quisque nec nibh sit amet lorem porttitor posuere. Cras eleifend est risus, in mollis libero laoreet eget. Ut laoreet consequat viverra. Cras molestie, purus in rutrum fermentum, massa neque semper enim, sed lobortis sem nisl ut sem. Morbi auctor rhoncus scelerisque. Suspendisse potenti. Aliquam consequat a mauris consequat lacinia. Praesent at sollicitudin enim. Fusce nibh metus, commodo at justo at, pharetra finibus tellus. Proin at diam non turpis ullamcorper mollis. Morbi condimentum nunc leo, vel feugiat nisi elementum quis.</p>
+
+					<p>Nullam vitae tempus mi. Phasellus vel accumsan purus, et tristique leo. Maecenas non lorem ac dui lacinia finibus et quis leo. In hac habitasse platea dictumst. Curabitur tristique nulla ut nulla faucibus tristique. Vivamus vel massa vulputate, volutpat neque at, rhoncus diam. Vivamus congue lectus vitae justo fermentum facilisis. Duis porta volutpat ligula, rutrum efficitur ante dictum nec. Nulla ac purus nec urna placerat porta. Vestibulum ultricies, velit vitae tempus pellentesque, metus nibh egestas nibh, at facilisis mi odio at neque. Fusce consequat eget lacus ac vehicula. Etiam a viverra nisi. Praesent finibus cursus ante nec volutpat. Nullam id sodales orci, ac venenatis enim. In hac habitasse platea dictumst. Donec dictum neque quis nisl ultrices vehicula.</p>
+
+					<p>Pellentesque a turpis vel leo luctus vehicula sed ac mauris. Curabitur volutpat at felis eget vulputate. Maecenas a hendrerit risus, ut cursus nibh. Pellentesque sit amet velit massa. Suspendisse dictum massa a sem eleifend, sed convallis sem blandit. Maecenas turpis purus, vestibulum quis consequat pharetra, volutpat rutrum lectus. In hac habitasse platea dictumst.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus ut tellus sed tincidunt. Maecenas ac tellus in eros sollicitudin aliquet. Nam tempus ligula massa, ac suscipit tortor placerat at. Suspendisse malesuada arcu nec egestas scelerisque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean velit nisl, pretium accumsan consectetur et, vehicula at orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi hendrerit ipsum ut suscipit pulvinar. Pellentesque ac odio eget augue posuere placerat nec quis ipsum. Vestibulum sapien tortor, feugiat id vestibulum a, tincidunt vitae sapien. Cras sit amet blandit justo, quis semper nunc. Fusce magna massa, ornare sed nulla nec, hendrerit luctus eros. Nullam lobortis, orci eu maximus iaculis, arcu nulla imperdiet eros, sit amet pulvinar odio dui vitae turpis. Mauris aliquam dui viverra scelerisque euismod.</p>
+
+					<p>Donec ac dignissim turpis. In dignissim justo viverra mattis sagittis. Nullam aliquam est aliquet risus imperdiet accumsan. Maecenas ultricies purus vitae pulvinar cursus. Duis id lacinia elit. Duis vel tincidunt leo. Donec viverra magna rhoncus nisl cursus, eget venenatis odio cursus. Maecenas vitae nisl vitae quam dictum venenatis eu at felis.</p>
+
+					<p>Proin id mauris elementum, dapibus lacus sit amet, vehicula tortor. Quisque nec nibh sit amet lorem porttitor posuere. Cras eleifend est risus, in mollis libero laoreet eget. Ut laoreet consequat viverra. Cras molestie, purus in rutrum fermentum, massa neque semper enim, sed lobortis sem nisl ut sem. Morbi auctor rhoncus scelerisque. Suspendisse potenti. Aliquam consequat a mauris consequat lacinia. Praesent at sollicitudin enim. Fusce nibh metus, commodo at justo at, pharetra finibus tellus. Proin at diam non turpis ullamcorper mollis. Morbi condimentum nunc leo, vel feugiat nisi elementum quis.</p>
+
+					<p>Nullam vitae tempus mi. Phasellus vel accumsan purus, et tristique leo. Maecenas non lorem ac dui lacinia finibus et quis leo. In hac habitasse platea dictumst. Curabitur tristique nulla ut nulla faucibus tristique. Vivamus vel massa vulputate, volutpat neque at, rhoncus diam. Vivamus congue lectus vitae justo fermentum facilisis. Duis porta volutpat ligula, rutrum efficitur ante dictum nec. Nulla ac purus nec urna placerat porta. Vestibulum ultricies, velit vitae tempus pellentesque, metus nibh egestas nibh, at facilisis mi odio at neque. Fusce consequat eget lacus ac vehicula. Etiam a viverra nisi. Praesent finibus cursus ante nec volutpat. Nullam id sodales orci, ac venenatis enim. In hac habitasse platea dictumst. Donec dictum neque quis nisl ultrices vehicula.</p>
+
+					<p>Pellentesque a turpis vel leo luctus vehicula sed ac mauris. Curabitur volutpat at felis eget vulputate. Maecenas a hendrerit risus, ut cursus nibh. Pellentesque sit amet velit massa. Suspendisse dictum massa a sem eleifend, sed convallis sem blandit. Maecenas turpis purus, vestibulum quis consequat pharetra, volutpat rutrum lectus. In hac habitasse platea dictumst.</p>
+
+					<h3 class="tot">Sub</h3>
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus ut tellus sed tincidunt. Maecenas ac tellus in eros sollicitudin aliquet. Nam tempus ligula massa, ac suscipit tortor placerat at. Suspendisse malesuada arcu nec egestas scelerisque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean velit nisl, pretium accumsan consectetur et, vehicula at orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi hendrerit ipsum ut suscipit pulvinar. Pellentesque ac odio eget augue posuere placerat nec quis ipsum. Vestibulum sapien tortor, feugiat id vestibulum a, tincidunt vitae sapien. Cras sit amet blandit justo, quis semper nunc. Fusce magna massa, ornare sed nulla nec, hendrerit luctus eros. Nullam lobortis, orci eu maximus iaculis, arcu nulla imperdiet eros, sit amet pulvinar odio dui vitae turpis. Mauris aliquam dui viverra scelerisque euismod.</p>
+
+					<p>Donec ac dignissim turpis. In dignissim justo viverra mattis sagittis. Nullam aliquam est aliquet risus imperdiet accumsan. Maecenas ultricies purus vitae pulvinar cursus. Duis id lacinia elit. Duis vel tincidunt leo. Donec viverra magna rhoncus nisl cursus, eget venenatis odio cursus. Maecenas vitae nisl vitae quam dictum venenatis eu at felis.</p>
+
+					<p>Proin id mauris elementum, dapibus lacus sit amet, vehicula tortor. Quisque nec nibh sit amet lorem porttitor posuere. Cras eleifend est risus, in mollis libero laoreet eget. Ut laoreet consequat viverra. Cras molestie, purus in rutrum fermentum, massa neque semper enim, sed lobortis sem nisl ut sem. Morbi auctor rhoncus scelerisque. Suspendisse potenti. Aliquam consequat a mauris consequat lacinia. Praesent at sollicitudin enim. Fusce nibh metus, commodo at justo at, pharetra finibus tellus. Proin at diam non turpis ullamcorper mollis. Morbi condimentum nunc leo, vel feugiat nisi elementum quis.</p>
+
+					<p>Nullam vitae tempus mi. Phasellus vel accumsan purus, et tristique leo. Maecenas non lorem ac dui lacinia finibus et quis leo. In hac habitasse platea dictumst. Curabitur tristique nulla ut nulla faucibus tristique. Vivamus vel massa vulputate, volutpat neque at, rhoncus diam. Vivamus congue lectus vitae justo fermentum facilisis. Duis porta volutpat ligula, rutrum efficitur ante dictum nec. Nulla ac purus nec urna placerat porta. Vestibulum ultricies, velit vitae tempus pellentesque, metus nibh egestas nibh, at facilisis mi odio at neque. Fusce consequat eget lacus ac vehicula. Etiam a viverra nisi. Praesent finibus cursus ante nec volutpat. Nullam id sodales orci, ac venenatis enim. In hac habitasse platea dictumst. Donec dictum neque quis nisl ultrices vehicula.</p>
+
+					<p>Pellentesque a turpis vel leo luctus vehicula sed ac mauris. Curabitur volutpat at felis eget vulputate. Maecenas a hendrerit risus, ut cursus nibh. Pellentesque sit amet velit massa. Suspendisse dictum massa a sem eleifend, sed convallis sem blandit. Maecenas turpis purus, vestibulum quis consequat pharetra, volutpat rutrum lectus. In hac habitasse platea dictumst.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dapibus ut tellus sed tincidunt. Maecenas ac tellus in eros sollicitudin aliquet. Nam tempus ligula massa, ac suscipit tortor placerat at. Suspendisse malesuada arcu nec egestas scelerisque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean velit nisl, pretium accumsan consectetur et, vehicula at orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi hendrerit ipsum ut suscipit pulvinar. Pellentesque ac odio eget augue posuere placerat nec quis ipsum. Vestibulum sapien tortor, feugiat id vestibulum a, tincidunt vitae sapien. Cras sit amet blandit justo, quis semper nunc. Fusce magna massa, ornare sed nulla nec, hendrerit luctus eros. Nullam lobortis, orci eu maximus iaculis, arcu nulla imperdiet eros, sit amet pulvinar odio dui vitae turpis. Mauris aliquam dui viverra scelerisque euismod.</p>
+
+					<p>Donec ac dignissim turpis. In dignissim justo viverra mattis sagittis. Nullam aliquam est aliquet risus imperdiet accumsan. Maecenas ultricies purus vitae pulvinar cursus. Duis id lacinia elit. Duis vel tincidunt leo. Donec viverra magna rhoncus nisl cursus, eget venenatis odio cursus. Maecenas vitae nisl vitae quam dictum venenatis eu at felis.</p>
+
+					<p>Proin id mauris elementum, dapibus lacus sit amet, vehicula tortor. Quisque nec nibh sit amet lorem porttitor posuere. Cras eleifend est risus, in mollis libero laoreet eget. Ut laoreet consequat viverra. Cras molestie, purus in rutrum fermentum, massa neque semper enim, sed lobortis sem nisl ut sem. Morbi auctor rhoncus scelerisque. Suspendisse potenti. Aliquam consequat a mauris consequat lacinia. Praesent at sollicitudin enim. Fusce nibh metus, commodo at justo at, pharetra finibus tellus. Proin at diam non turpis ullamcorper mollis. Morbi condimentum nunc leo, vel feugiat nisi elementum quis.</p>
+
+					<p>Nullam vitae tempus mi. Phasellus vel accumsan purus, et tristique leo. Maecenas non lorem ac dui lacinia finibus et quis leo. In hac habitasse platea dictumst. Curabitur tristique nulla ut nulla faucibus tristique. Vivamus vel massa vulputate, volutpat neque at, rhoncus diam. Vivamus congue lectus vitae justo fermentum facilisis. Duis porta volutpat ligula, rutrum efficitur ante dictum nec. Nulla ac purus nec urna placerat porta. Vestibulum ultricies, velit vitae tempus pellentesque, metus nibh egestas nibh, at facilisis mi odio at neque. Fusce consequat eget lacus ac vehicula. Etiam a viverra nisi. Praesent finibus cursus ante nec volutpat. Nullam id sodales orci, ac venenatis enim. In hac habitasse platea dictumst. Donec dictum neque quis nisl ultrices vehicula.</p>
+
+					<p>Pellentesque a turpis vel leo luctus vehicula sed ac mauris. Curabitur volutpat at felis eget vulputate. Maecenas a hendrerit risus, ut cursus nibh. Pellentesque sit amet velit massa. Suspendisse dictum massa a sem eleifend, sed convallis sem blandit. Maecenas turpis purus, vestibulum quis consequat pharetra, volutpat rutrum lectus. In hac habitasse platea dictumst.</p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			
+			document.addEventListener('scroll', function(e){
+				console.log(e);
+			}, true);
+		</script>
+	</body>
+</html>
