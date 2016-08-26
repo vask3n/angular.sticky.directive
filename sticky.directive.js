@@ -12,18 +12,21 @@
       var self = this;
       self.isStickyActive = false;
 
-      var stickyFrom = isStickyFrom();
-      var stickyUntil = isStickyUntil();
-      var stickyOffset = parseInt(self.stickyOffset) || 0;
+      var parentElem;
+      var stickyFrom;
+      var stickyUntil;
+      var stickyOffset;
       var stickyFromMedia = isStickyFromMedia();
       var scrollView = getStickyParent();
       var scrollViewOffset = getScrollViewOffset();
-      var parentElem;
 
       init();
 
       function init() {
         createParentElement();
+        stickyFrom = isStickyFrom();
+        stickyUntil = isStickyUntil()
+        stickyOffset = parseInt(self.stickyOffset) || 0;
       }
 
       function createParentElement() {
@@ -92,7 +95,7 @@
         if (angular.isDefined(self.stickyFrom)) {
           return document.querySelector(self.stickyFrom);
         }
-        return $element.parent()[0];
+        return parentElem[0]; // dummy block
       }
 
       function isStickyUntil() {
@@ -114,15 +117,21 @@
         }
       }
 
-      angular.element(scrollView).on('scroll', function () {
-        // Trigger directive functions on scroll.
-        if (stickyFrom.getBoundingClientRect().top < stickyOffset && stickyFromMedia) {
+      function scrollEvent(e){
+        var origin = (scrollView !== $window) ? scrollView[0].getBoundingClientRect().top : 0;
+        var from = (stickyFrom.getBoundingClientRect().top - origin);
+
+        if (from < stickyOffset && stickyFromMedia) {
           sticky();
-        } else if (stickyFrom.getBoundingClientRect().top > stickyOffset && stickyFromMedia || stickyUntil && stickyFromMedia && (stickyUntil.getBoundingClientRect().top - $element[0].offsetHeight) < stickyOffset) {
+        } else if (from > stickyOffset && stickyFromMedia || stickyUntil && stickyFromMedia && (stickyUntil.getBoundingClientRect().top - $element[0].offsetHeight) < stickyOffset) {
           unsticky();
         }
+      }
+
+      angular.element(scrollView).on('scroll', function() {
+        scrollEvent();
       });
-      
+
     }
 
     return {
